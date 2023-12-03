@@ -50,10 +50,9 @@
 
 * {
 	box-sizing: border-box;
-	}
+  }
 	
-html,
-body {
+html,body {
 	background: #383838;
 	color: #00dd00;
 	font-size: 64.5%;
@@ -196,8 +195,6 @@ img.pip-hero {
 	width: 120px;
 }
 
-form {}
-
 label {
 	clear: left;
 	display: block;
@@ -221,7 +218,7 @@ textarea {
 }
 
 textarea {
-	margin-bottom: 20px
+	margin-bottom: 20px;
 	overflow: auto;
 	resize: none;
 }
