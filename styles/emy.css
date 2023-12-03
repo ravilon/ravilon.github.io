@@ -54,7 +54,8 @@ input[type="text"] {
     font-size: 1.2em;
     font-family: 'MonsterFriendBack', cursive;
     text-shadow: 3px 3px 3px black;
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    border-radius: 5px;
+    width: 200px; /* Adjust the width as needed */
 }
 
 @keyframes stars-background-animation {
@@ -127,7 +128,7 @@ input[type="text"] {
 }
 
 h1 {
-    font-size: 1.4em;
+    font-size: 0.8em;
     color: aliceblue;
     text-shadow: 3px 3px 3px black;
     animation: text-animation 5s ease infinite;
