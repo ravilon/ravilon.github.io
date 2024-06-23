@@ -83,7 +83,7 @@ button:hover {
 
 .container{
     display: flex;
-    background-color: rgba(0, 0, 0, 0.652);
+    background-color: rgba(34, 34, 34, 0.652);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -103,13 +103,43 @@ button:hover {
 }
 
 h1 {
-    font-size: 1.4em;
+    font-size: 1.6em;
     color: aliceblue;
     text-shadow: 3px 3px 3px black;
     animation: text-animation 5s ease infinite;
     text-align: center;
     padding: 4px;
     margin: 4px;
+}
+
+h2 {
+    font-size: 1.0em;
+    color: aliceblue;
+    text-shadow: 2px 2px 2px black;
+    animation: text-animation 5s ease infinite;
+    text-align: center;
+    padding: 2px;
+    margin: 2px;
+}
+
+h3 {
+    font-size: 0.8em;
+    color: aliceblue;
+    text-shadow: 1px 1px 1px black;
+    animation: text-animation 5s ease infinite;
+    text-align: center;
+    padding: 1px;
+    margin: 1px;
+}
+
+a {
+    font-size: 0.4em;
+    color: aliceblue;
+    text-shadow: 1px 1px 1px black;
+    animation: text-animation 5s ease infinite;
+    text-align: center;
+    padding: 1px;
+    margin: 1px;
 }
 
 footer {
@@ -124,6 +154,11 @@ footer {
     bottom: 0;
     width: auto;
     height: 100px; /* Set a fixed height for the footer or adjust as needed */
+}
+
+.social-icons a {
+    display: inline-block; /* Ensures each icon is on a separate line */
+    margin-right: 10px; /* Adjust margin between icons */
 }
 
 
