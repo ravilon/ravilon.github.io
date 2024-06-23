@@ -1,0 +1,24 @@
+.body-container {
+    background-color: #202527; 
+    background-image: url("https://64.media.tumblr.com/cc8f5e44540fbc3cd5f2021737314725/tumblr_odzkt6hm0l1uxpn9eo1_540.gif");
+    background-position: cover;
+    background-size: cover;
+    background-blend-mode: overlay;
+    overflow:auto;
+}
+
+.container {
+    background-color: #202527; 
+    background-image: url("../images/mariajoana.png");
+    background-position: cover;
+    background-size: cover;
+    background-blend-mode: overlay;
+    overflow:auto;
+}
+
+.container-h1 {
+    color: #f5f5f5;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
