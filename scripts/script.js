@@ -20,3 +20,14 @@ function openPopup(url) {
   // Open the popup window with the specified URL and options
   window.open(url, 'PopupWindow', options);
 }
+
+// Cria corações flutuantes no fundo
+function spawnHeart() {
+  const heart = document.createElement('img');
+  heart.src = 'images/heart-pixel.gif';
+  heart.className = 'floating-heart';
+  heart.style.left = Math.random() * 80 + 'vw';
+  document.body.append(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+setInterval(spawnHeart, 800);

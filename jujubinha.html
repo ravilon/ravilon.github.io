@@ -1,117 +1,287 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <header>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles\styles.css">
-        <script src="scripts\script.js"></script>
-    </header>
-    <body>
-        <div class="container">
-            <br>
-            <h1> Wellcome Adventurer! </h1>
-                <br>
-            <h3> Here lives the chosen one adeveloper,  </h3>
-                <br>
-            <h3> an adventurer and developer </h3>
-                <br>
-            <img src="images/link-hero.gif" alt="Link" style="width: 300px; height: auto;">
-            <h3> Is dangerous to go alone... </h3>
-                <br>
-            <h3> ( Below, some of my personal projects ) </h3>
-                <br>
-            <div class="container">
-                <br>
-                <h3> Life Bar </h3>
-                <br>
-                <img src="images/heartbar.png" alt="LifeBar" style="width: 150px; height: auto;">
-                <br>
-                
-                <div class="container-item" >
-                    <h3>  My life bar, it shows how much energy I have left. </h3>
-                </div>
-                <br>
-                <img src="images/inventory.png" alt="Logo" style="width: 200px; height: auto;">
-                <br>
-                
-                <div class="container-item">
-                    <h3>  All the items that I have collected in my journey </h3>
-                </div>
-                <br>
-                
-                
-                <div class="container-item">
-                    
-                    <div class="container">
-                        <br>
-                        <h3> FIMS </h3>
-                        <img src="images/zeldabean.webp" alt="Logo" style="width: 50px; height: auto;">
-                        <button onclick="openPopup('https://github.com/ravilon/FIMS')"> Equip </button>
-                        <br>
-                    </div>
-                    
-                    <div class="container">
-                        <br>
-                        <h3> Alumnus </h3>
-                        <img src="images/zeldamap.png" alt="Logo" style="width: 50px; height: auto;">
-                        <button onclick="openPopup('https://github.com/ravilon/Alumnus')">Equip</button>
-                        <br>
-                    </div>
-                    
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aventura do Amor – Dia dos Namorados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #e66465 0%, #9198e5 100%);
+        }
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 40px;
+            background: rgba(30, 30, 40, 0.88);
+            border-radius: 30px;
+            box-shadow: 0 0 24px #0006;
+            position: relative;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .heart-beat {
+            width: 60px;
+            animation: heartbeat 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            20% { transform: scale(1.15); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.25); }
+            80% { transform: scale(1); }
+        }
+        .love-bar {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            gap: 5px;
+        }
+        .inventory-list {
+            text-align: left;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        .missions, .equipments {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .mission, .equipment {
+            background: rgba(60, 20, 40, 0.8);
+            padding: 18px 18px 12px 18px;
+            border-radius: 18px;
+            text-align: center;
+            min-width: 180px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 12px #fa83d2a6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .mission img {
+            width: 300px;
+            max-width: 90vw;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 0 18px #fff5;
+            margin-bottom: 16px;
+        }
+        .mission div {
+            margin-top: 8px;
+            background: rgba(255,255,255,0.10);
+            border-radius: 8px;
+            padding: 12px 8px 10px 8px;
+            color: #fff;
+            font-size: 1em;
+            min-height: 2.2em;
+            font-family: 'Press Start 2P', cursive;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 4px #0002;
+            text-shadow: 0 1px 3px #0008;
+        }
+        .equipment button {
+            margin-top: 10px;
+            font-family: inherit;
+            background: #ff76b6;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background .2s;
+            font-size: 12px;
+        }
+        .equipment button:hover {
+            background: #e66465;
+        }
+        .romantic-footer {
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 20px 0 5px 0;
+            font-size: 13px;
+            border-radius: 0 0 30px 30px;
+            margin-top: 40px;
+        }
+        /* Floating hearts */
+        .floating-heart {
+            position: fixed;
+            bottom: -40px;
+            pointer-events: none;
+            z-index: 3;
+            width: 32px;
+            opacity: .85;
+            animation: floatUp 5s linear forwards;
+        }
+        @keyframes floatUp {
+            to {
+                transform: translateY(-120vh) scale(1.2) rotate(30deg);
+                opacity: 0.1;
+            }
+        }
+        /* Decorative stars background */
+        .star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            opacity: .1;
+            z-index: 0;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ NOSSA AVENTURA DE AMOR ✨</h1>
+        <h3>Bem-vinda, minha heroína!</h3>
+        <br>
+        <h3>
+            Juntos, desbloqueamos conquistas, derrotamos chefões e colecionamos corações 
+        </h3>
+        <h3>
+            É perigoso ir sozinho... <b>Leve o meu amor!</b>
+        </h3>
+        <br>
 
-                <div class="container-item">
-                   
-                    <div class="container">
-                        <br>
-                        <h3> Z808-Feijoada </h3>
-                        <img src="images/dekuzelda.png" alt="Logo" style="width: 50px; height: auto;">
-                        <button onclick="openPopup('https://github.com/RaideNnigth/Z808-Feijoada')"> Equip </button>
-                        <br>
-                    </div>
-                    <div class="container">
-                        <br>
-                        <h3> Lemon Block </h3>
-                        <img src="images/dustzelda.png" alt="Logo" style="width: 40px; height: auto;">
-                        <button onclick="openPopup('https://github.com/RaideNnigth/LemonJuiceBlockChain')"> Equip </button>
-                        <br>
-                    </div>
-
-                </div>
-                <br>
+        <h3>Barra de Amor</h3>
+        <div class="love-bar">
+            <img src="https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png" alt="Heart" class="heart-beat">
+            <img src="https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png" alt="Heart" class="heart-beat">
+            <img src="https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png" alt="Heart" class="heart-beat">
+            <img src="https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png" alt="Heart" class="heart-beat">
+        </div>
+        <h4 style="color:#ffb4ee;">Quanto mais estamos juntos, mais cheia ela fica! 💘</h4>
+        <br>
+        <div id="tempo-juntos" style="margin: 0 auto; text-align: center; font-size: 1.1em; color: #fff; background: rgba(255,255,255,0.09); border-radius: 14px; padding: 16px 10px; max-width: 350px; box-shadow: 0 0 10px #fa83d288;">
+            <span style="color: #ffb4ee;">⏳ Estamos juntos há:</span>
+            <div id="contador-tempo" style="font-size:1.2em; margin-top:10px; font-family:'Press Start 2P',cursive; letter-spacing:1px;"></div>
+        </div>
+        <h3>Inventário do Amor 
+            <img src="https://cdn-icons-png.flaticon.com/512/5218/5218899.png" alt="Inventário do Amor" style="width: 48px; vertical-align: middle;">
+        </h3>
+        <ul class="inventory-list">
+            <li>🍫 Chocolates compartilhados</li>
+            <li>🎬 Maratonas de séries</li>
+            <li>🥘 Jantinhas especiais</li>
+            <li>🎮 Jogatinas de madrugada</li>
+            <li>💬 Conversas sem fim</li>
+        </ul>
+        <br>
+        <div class="missions">
+            <div class="mission">
+                <img src="images/jujubinha/fotocomju1.jpeg" alt="Primeiro rolê juntos">
+                <div>Galps 💃</div>
             </div>
-            <br>
-            <br>
+            <div class="mission">
+                <img src="images/jujubinha/fotocomju2.jpeg" alt="Momento no elevador">
+                <div>Subindo na vida né kk 🛗</div>
+            </div>
+            <div class="mission">
+                <img src="images/jujubinha/fotocomju3.jpeg" alt="Selfie boba">
+                <div>Bobalhona 🤪</div>
+            </div>
+            <div class="mission">
+                <img src="images/jujubinha/fotocomju4.jpeg" alt="Olhar apaixonado">
+                <div>Foto do teu ex pra ti não superar nunca 😍</div>
+            </div>
+            <div class="mission">
+                <img src="images/jujubinha/fotocomju5.jpeg" alt="Viagem dos sonhos">
+                <div>12 horas de moto puta que pariu 🌄</div>
+            </div>
+            <div class="mission">
+                <img src="images/jujubinha/fotocomju6.jpeg" alt="Noite especial">
+                <div> Fiz essa peruca catando os cabelo que tu larga aqui kkkk 🎉</div>
+            </div>
         </div>
-    </body>
-   
-    <img src="images/hero.gif" alt="Logo" style="width: 200px; height: auto;">
-    
-    <footer>
-        
-        <h2>Created by Ravilon Aguiar</h2>
-        <h3>&copy; 2024 All rights reserved.</h3>
-        
-    </footer>
-    <div class="container-item">
-        
-        <div class="container">
-            <a href="https://www.instagram.com/raviilon" target="_blank" rel="noopener noreferrer">
-                <img src="images/instagram-icon.png" alt="Instagram" style="width: 50px; height: auto;">
-            </a>
+        <br>
+        <h3>Equipamentos de Casal</h3>
+        <div class="equipments">
+            <div class="equipment">
+                <div>Anel</div>
+                <button onclick="alert('Aliança inquebrável equipada!')">EQUIPAR</button>
+            </div>
+            <div class="equipment">
+                <div>Flor</div>
+                <button onclick="alert('Flor do amor eterno equipada!')">EQUIPAR</button>
+            </div>
         </div>
-        
-        <div class="container">
-            <a href="https://github.com/ravilon" target="_blank" rel="noopener noreferrer">
-                <img src="images/github-icon.png" alt="GitHub" style="width: 50px; height: auto;">
-            </a>
+        <br>
+        <div style="text-align:center;">
+            <h3>
+                <span style="color:#e25555;">❤️ Te amo, minha player 2! ❤️</span>
+                <br>
+                <em style="color:#c7f8f6;">Que venham muitas fases, missões e corações pela frente!</em>
+            </h3>
         </div>
-        
-        <div class="container">
-            <a href="https://x.com/raviilon" target="_blank" rel="noopener noreferrer">
-                <img src="images/twitter-icon.png" alt="Twitter" style="width: 50px; height: auto;">
-            </a>
-        </div>    
-        
     </div>
+
+    <div class="romantic-footer">
+        <h2>Criado com amor por Rávilon &copy; 2025</h2>
+        <h3>Te amo, Ju! 🌹</h3>
+    </div>
+
+    <!-- Floating hearts JS -->
+    <script>
+        function atualizarContadorTempo() {
+        const inicio = new Date('2024-06-26T00:00:00');
+        const agora = new Date();
+        let diff = agora - inicio; // diferença em ms
+
+        if (diff < 0) diff = 0;
+
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diff / (1000 * 60)) % 60);
+        const segundos = Math.floor((diff / 1000) % 60);
+
+        const str = `${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+        document.getElementById('contador-tempo').textContent = str;
+    }
+
+    setInterval(atualizarContadorTempo, 1000);
+    atualizarContadorTempo();
+        function spawnHeart() {
+            const heart = document.createElement('img');
+            const heartImgs = [
+                "https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png",
+                "https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png",
+                "https://opengameart.org/sites/default/files/heart%20pixel%20art%20254x254.png"
+            ];
+            heart.src = heartImgs[Math.floor(Math.random()*heartImgs.length)];
+            heart.className = 'floating-heart';
+            heart.style.left = Math.random() * 98 + "vw";
+            document.body.appendChild(heart);
+            setTimeout(()=>heart.remove(), 5100);
+        }
+        setInterval(spawnHeart, 800);
+
+        // Decorative stars in the background
+        function spawnStars(n=35) {
+            for(let i=0;i<n;i++){
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = (Math.random() * 100) + 'vw';
+                star.style.top = (Math.random() * 100) + 'vh';
+                star.style.width = star.style.height = (Math.random()*2+1) + 'px';
+                document.body.appendChild(star);
+            }
+        }
+        spawnStars();
+    </script>
+</body>
 </html>

@@ -161,6 +161,14 @@ footer {
     margin-right: 10px; /* Adjust margin between icons */
 }
 
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.heart-beat {
+  width: 50px;
+  animation: heartbeat 1s infinite;
+}
 
 
     
