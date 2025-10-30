@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Dividir Excel em X Partes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --bg:#0f172a; --card:#111827; --muted:#9ca3af; --text:#e5e7eb; --accent:#22c55e; --warn:#f59e0b; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% -20%, #1f2937 0%, transparent 60%) , var(--bg);
+      color: var(--text);
+      min-height: 100vh; display: grid; place-items: center; padding: 24px;
+    }
+    .card {
+      width: 100%; max-width: 720px; background: linear-gradient(180deg,#111827 0%, #0b1220 100%);
+      border: 1px solid rgba(255,255,255,.05); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      padding: 22px;
+    }
+    h1 { margin: 0 0 6px; font-size: 1.35rem; letter-spacing: .2px; }
+    p.subtitle { margin: 0 0 18px; color: var(--muted); font-size: .95rem; }
+    .row { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 640px){ .row{ grid-template-columns: 1fr 200px; } }
+    label { font-size: .9rem; color: var(--muted); display: block; margin-bottom: 6px; }
+    input[type="file"], input[type="number"], select {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+      background: #0b1220; color: var(--text); outline: none;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .hint { font-size: .86rem; color: var(--muted); margin-top: 6px; }
+    .actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    button {
+      border: 1px solid rgba(255,255,255,.1); background: #0d1324; color: var(--text); padding: 12px 14px;
+      border-radius: 12px; cursor: pointer; transition: .15s transform ease, .15s background ease, .15s border-color ease;
+    }
+    button.primary { background: linear-gradient(180deg, #10b981, #059669); border-color: #10b981; }
+    button.primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+    .status { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 999px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); font-size: .85rem;
+    }
+    .ok { color: var(--accent); }
+    .warn { color: var(--warn); }
+    .footer { margin-top: 18px; font-size: .8rem; color: var(--muted); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .toggle { display:flex; align-items:center; gap:10px; }
+    .toggle input { width:auto; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Dividir Excel em X Partes</h1>
+    <p class="subtitle">Selecione seu arquivo, escolha o número de partes e gere arquivos menores com o mesmo cabeçalho.</p>
+
+    <div class="row">
+      <div>
+        <label for="file">Arquivo (.xlsx, .xls, .csv)</label>
+        <input id="file" type="file" accept=".xlsx,.xls,.csv" />
+        <div class="hint">Tudo roda localmente no seu navegador.</div>
+      </div>
+      <div>
+        <label for="parts">Número de partes (X)</label>
+        <input id="parts" type="number" min="2" step="1" value="2" />
+        <div class="hint">Ex.: 2 → divide em 2 arquivos.</div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px;">
+      <div class="toggle">
+        <input id="firstRowHeader" type="checkbox" checked />
+        <label for="firstRowHeader">Primeira linha é cabeçalho</label>
+      </div>
+      <div class="toggle">
+        <input id="skipEmpty" type="checkbox" checked />
+        <label for="skipEmpty">Ignorar linhas totalmente vazias</label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="previewBtn">Pré-visualizar</button>
+      <button id="splitBtn" class="primary" disabled>Dividir & Baixar</button>
+    </div>
+
+    <div id="status" class="status">Aguardando arquivo...</div>
+    <div id="stats" class="status"></div>
+    <div class="footer">Dica: se X for maior que o número de linhas, limitamos X para evitar arquivos somente com cabeçalho.</div>
+  </div>
+
+  <!-- SheetJS (XLSX) via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <script>
+    const $ = (q) => document.querySelector(q);
+    const fileInput = $("#file");
+    const partsInput = $("#parts");
+    const splitBtn = $("#splitBtn");
+    const previewBtn = $("#previewBtn");
+    const statusEl = $("#status");
+    const statsEl = $("#stats");
+    const firstRowHeaderEl = $("#firstRowHeader");
+    const skipEmptyEl = $("#skipEmpty");
+
+    let workbookCache = null;
+    let sourceName = "arquivo";
+
+    function setStatus(msg, type = "") {
+      statusEl.innerHTML = `<span class="pill ${type}">${msg}</span>`;
+    }
+    function setStats(msg) {
+      statsEl.textContent = msg || "";
+    }
+
+    fileInput.addEventListener("change", () => {
+      workbookCache = null;
+      setStats("");
+      const file = fileInput.files?.[0];
+      if (!file) { setStatus("Aguardando arquivo..."); splitBtn.disabled = true; return; }
+      sourceName = (file.name || "arquivo").replace(/\.(xlsx|xls|csv)$/i, "");
+      setStatus(`Arquivo selecionado: ${file.name}`, "ok");
+      splitBtn.disabled = false;
+    });
+
+    previewBtn.addEventListener("click", async () => {
+      try {
+        const { header, rows } = await loadData();
+        const parts = safeParts(rows.length);
+        const chunkSize = Math.ceil(rows.length / parts);
+        setStatus("Pré-visualização pronta.", "ok");
+        setStats(`Linhas de dados: ${rows.length} | Partes: ${parts} | Tamanho estimado ~ ${chunkSize} por arquivo.`);
+      } catch (e) {
+        handleError(e);
+      }
+    });
+
+    splitBtn.addEventListener("click", async () => {
+      try {
+        setStatus("Lendo arquivo...");
+        const { header, rows } = await loadData();
+        let parts = safeParts(rows.length);
+
+        const chunkSize = Math.ceil(rows.length / parts);
+        setStatus(`Dividindo em ${parts} parte(s)...`);
+        const headerRow = firstRowHeaderEl.checked ? header : null;
+
+        for (let i = 0; i < parts; i++) {
+          const start = i * chunkSize;
+          const end = Math.min(start + chunkSize, rows.length);
+          const chunk = rows.slice(start, end);
+
+          // pular partes vazias (podem acontecer se parts > rows)
+          if (chunk.length === 0) continue;
+
+          // Monta planilha: se tiver header, usa AOA (arrays de arrays)
+          const aoa = headerRow ? [headerRow, ...chunk] : chunk;
+          const ws = XLSX.utils.aoa_to_sheet(aoa);
+          const wb = XLSX.utils.book_new();
+          XLSX.utils.book_append_sheet(wb, ws, "Dados");
+
+          const fileName = `${sourceName}_part${i+1}of${parts}.xlsx`;
+          XLSX.writeFile(wb, fileName);
+        }
+        setStatus("Arquivos gerados com sucesso!", "ok");
+        setStats(`Total gerado: até ${parts} arquivo(s).`);
+      } catch (e) {
+        handleError(e);
+      }
+    });
+
+    function safeParts(rowsLen) {
+      let parts = parseInt(partsInput.value, 10);
+      if (!Number.isFinite(parts) || parts < 2) parts = 2;
+      // Evita criar muitos arquivos vazios; limita ao número de linhas
+      if (rowsLen > 0) parts = Math.min(parts, rowsLen);
+      return parts;
+    }
+
+    async function loadData() {
+      const file = fileInput.files?.[0];
+      if (!file) throw new Error("Selecione um arquivo primeiro.");
+      const arrayBuffer = await file.arrayBuffer();
+
+      // Lê o workbook
+      const wb = XLSX.read(arrayBuffer, { type: "array", cellDates: true, raw: false });
+      const firstSheetName = wb.SheetNames[0];
+      if (!firstSheetName) throw new Error("Nenhuma planilha encontrada no arquivo.");
+
+      const ws = wb.Sheets[firstSheetName];
+
+      // sheet_to_json com header:1 retorna matriz (AOA) mantendo ordem/colunas
+      let aoa = XLSX.utils.sheet_to_json(ws, { header: 1, defval: "" });
+
+      // Remove linhas totalmente vazias (opcional)
+      if (skipEmptyEl.checked) {
+        aoa = aoa.filter(row => Array.isArray(row) && row.some(cell => String(cell).trim() !== ""));
+      }
+
+      let header = [];
+      let rows = [];
+      if (firstRowHeaderEl.checked) {
+        if (aoa.length === 0) throw new Error("Planilha vazia.");
+        header = aoa[0].map(v => v === null || v === undefined ? "" : v);
+        rows = aoa.slice(1).map(line => normalizeRow(line, header.length));
+      } else {
+        // sem cabeçalho: tudo é dado
+        if (aoa.length === 0) throw new Error("Planilha vazia.");
+        // define header sintético: Col1, Col2, ...
+        const maxCols = Math.max(...aoa.map(r => r.length));
+        header = Array.from({ length: maxCols }, (_, i) => `Col${i+1}`);
+        rows = aoa.map(line => normalizeRow(line, maxCols));
+      }
+
+      return { header, rows };
+    }
+
+    function normalizeRow(row, length) {
+      const out = Array.from({ length }, (_, i) => row[i] === undefined ? "" : row[i]);
+      return out;
+    }
+
+    function handleError(e) {
+      console.error(e);
+      setStatus(`Erro: ${e.message || e}`, "warn");
+    }
+  </script>
+</body>
+</html>
