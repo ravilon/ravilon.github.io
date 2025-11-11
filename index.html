@@ -1,117 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <header>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles\styles.css">
-        <script src="scripts\script.js"></script>
-    </header>
-    <body>
-        <div class="container">
-            <br>
-            <h1> Wellcome Adventurer! </h1>
-                <br>
-            <h3> Here lives the chosen one adeveloper,  </h3>
-                <br>
-            <h3> an adventurer and developer </h3>
-                <br>
-            <img src="images/link-hero.gif" alt="Link" style="width: 300px; height: auto;">
-            <h3> Is dangerous to go alone... </h3>
-                <br>
-            <h3> ( Below, some of my personal projects ) </h3>
-                <br>
-            <div class="container">
-                <br>
-                <h3> Life Bar </h3>
-                <br>
-                <img src="images/heartbar.png" alt="LifeBar" style="width: 150px; height: auto;">
-                <br>
-                
-                <div class="container-item" >
-                    <h3>  My life bar, it shows how much energy I have left. </h3>
-                </div>
-                <br>
-                <img src="images/inventory.png" alt="Logo" style="width: 200px; height: auto;">
-                <br>
-                
-                <div class="container-item">
-                    <h3>  All the items that I have collected in my journey </h3>
-                </div>
-                <br>
-                
-                
-                <div class="container-item">
-                    
-                    <div class="container">
-                        <br>
-                        <h3> FIMS </h3>
-                        <img src="images/zeldabean.webp" alt="Logo" style="width: 50px; height: auto;">
-                        <button onclick="openPopup('https://github.com/ravilon/FIMS')"> Equip </button>
-                        <br>
-                    </div>
-                    
-                    <div class="container">
-                        <br>
-                        <h3> Alumnus </h3>
-                        <img src="images/zeldamap.png" alt="Logo" style="width: 50px; height: auto;">
-                        <button onclick="openPopup('https://github.com/ravilon/Alumnus')">Equip</button>
-                        <br>
-                    </div>
-                    
-                </div>
-
-                <div class="container-item">
-                   
-                    <div class="container">
-                        <br>
-                        <h3> Z808-Feijoada </h3>
-                        <img src="images/dekuzelda.png" alt="Logo" style="width: 50px; height: auto;">
-                        <button onclick="openPopup('https://github.com/RaideNnigth/Z808-Feijoada')"> Equip </button>
-                        <br>
-                    </div>
-                    <div class="container">
-                        <br>
-                        <h3> Lemon Block </h3>
-                        <img src="images/dustzelda.png" alt="Logo" style="width: 40px; height: auto;">
-                        <button onclick="openPopup('https://github.com/RaideNnigth/LemonJuiceBlockChain')"> Equip </button>
-                        <br>
-                    </div>
-
-                </div>
-                <br>
-            </div>
-            <br>
-            <br>
-        </div>
-    </body>
-   
-    <img src="images/hero.gif" alt="Logo" style="width: 200px; height: auto;">
     
-    <footer>
-        
-        <h2>Created by Ravilon Aguiar</h2>
-        <h3>&copy; 2024 All rights reserved.</h3>
-        
-    </footer>
-    <div class="container-item">
-        
-        <div class="container">
-            <a href="https://www.instagram.com/raviilon" target="_blank" rel="noopener noreferrer">
-                <img src="images/instagram-icon.png" alt="Instagram" style="width: 50px; height: auto;">
-            </a>
+<head>
+    <meta charset="UTF-8">
+    <title>Ravilon | Adventurer & Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container hero">
+            <div class="hero-text">
+                <p class="hero-subtitle">Hey, Listen!</p>
+                <h1>Welcome, Adventurer!</h1>
+                <p class="hero-description">
+                    Here lives <strong>a developer and adventurer</strong> — always grinding XP,
+                    learning new skills and crafting side quests in code.
+                </p>
+                <p class="hero-quote">
+                    “It's dangerous to go alone… take some projects!”
+                </p>
+            </div>
+            <div class="hero-image">
+                <img src="images/link-hero.gif" alt="Link pixel art" />
+            </div>
         </div>
-        
-        <div class="container">
-            <a href="https://github.com/ravilon" target="_blank" rel="noopener noreferrer">
-                <img src="images/github-icon.png" alt="GitHub" style="width: 50px; height: auto;">
-            </a>
+    </header>
+
+    <main class="site-main">
+        <!-- Status HUD -->
+        <section class="section status-section">
+            <div class="container status-grid">
+                <div class="status-card">
+                    <h2>Life Bar</h2>
+                    <img src="images/heartbar.png" alt="Life bar" class="status-image">
+                    <p class="status-text">
+                        My life bar – how much energy I still have for new adventures.
+                    </p>
+                </div>
+
+                <div class="status-card">
+                    <h2>Inventory</h2>
+
+                    <!-- MOCHILA INTERATIVA -->
+                    <button class="inventory-button" id="inventory-button" type="button">
+                        <img src="images/inventory.png" alt="Inventory backpack" class="status-image">
+                        <span class="inventory-label">Open inventory</span>
+                    </button>
+
+                    <p class="status-text">
+                        All the items, skills and tools I’ve collected on my journey.
+                        Click the backpack to see equipped projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    <!-- INVENTORY MENU (overlay) -->
+    <div id="inventory-overlay" class="inventory-overlay" aria-hidden="true">
+        <div class="inventory-panel" role="dialog" aria-modal="true" aria-labelledby="inventory-title">
+            <div class="inventory-header">
+                <h3 id="inventory-title">Equipped Projects</h3>
+                <button class="inventory-close-btn" type="button" aria-label="Close inventory">&times;</button>
+            </div>
+            <p class="inventory-description">
+                Choose an item to equip — each project opens in a new tab.
+            </p>
+            <div id="inventory-list" class="inventory-list">
+                <!-- JS vai renderizar os itens do inventário aqui -->
+            </div>
         </div>
-        
-        <div class="container">
-            <a href="https://x.com/raviilon" target="_blank" rel="noopener noreferrer">
-                <img src="images/twitter-icon.png" alt="Twitter" style="width: 50px; height: auto;">
-            </a>
-        </div>    
-        
     </div>
+
+    <section class="section hero-footer">
+        <div class="container hero-footer-inner">
+            <img src="images/ravilonDancante.gif" alt="Hero walking" class="hero-footer-image">
+            <p class="hero-footer-text">
+                New dungeons and refactors are always ahead. Let’s keep adventuring.
+            </p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-text">
+                <h3>Created by Ravilon Aguiar</h3>
+                <p>&copy; 2024 All rights reserved.</p>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/raviilon" target="_blank" rel="noopener noreferrer">
+                    <img src="images/instagramicon.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://github.com/ravilon" target="_blank" rel="noopener noreferrer">
+                    <img src="images/github-icon.png" alt="GitHub" class="social-icon">
+                </a>
+                <a href="https://x.com/raviilon" target="_blank" rel="noopener noreferrer">
+                    <img src="images/twittericon.png" alt="Twitter/X" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
