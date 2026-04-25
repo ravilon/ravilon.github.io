@@ -47,13 +47,27 @@
                     <!-- MOCHILA INTERATIVA -->
                     <button class="inventory-button" id="inventory-button" type="button">
                         <img src="images/inventory.png" alt="Inventory backpack" class="status-image">
-                        <span class="inventory-label"><b>*Touch the bag if you are curious enough*</b></span>
+                        <span class="inventory-label">Open Project Inventory</span>
                     </button>
 
                     <p class="status-text">
-                        All the items, skills and tools I’ve collected on my journey.
-                        Click the backpack to see equipped projects.
+                        Browse the complete project inventory, from backend quests to full-stack adventures.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section projects-section" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Selected quests</p>
+                    <h2 id="projects-title">Projects</h2>
+                    <p class="section-subtitle">
+                        A quick look at the main projects in my inventory. Each one opens the code in a new tab.
+                    </p>
+                </div>
+                <div id="projects-grid" class="projects-grid">
+                    <!-- JS vai renderizar os projetos aqui -->
                 </div>
             </div>
         </section>
@@ -62,11 +76,11 @@
     <div id="inventory-overlay" class="inventory-overlay" aria-hidden="true">
         <div class="inventory-panel" role="dialog" aria-modal="true" aria-labelledby="inventory-title">
             <div class="inventory-header">
-                <h3 id="inventory-title">Equipped Projects</h3>
+                <h3 id="inventory-title">Project Inventory</h3>
                 <button class="inventory-close-btn" type="button" aria-label="Close inventory">&times;</button>
             </div>
             <p class="inventory-description">
-                Choose an item to equip — each project opens in a new tab.
+                Choose a project to inspect the repository.
             </p>
             <div id="inventory-list" class="inventory-list">
                 <!-- JS vai renderizar os itens do inventário aqui -->
@@ -82,6 +96,7 @@
             </p>
         </div>
     </section>
+    </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">

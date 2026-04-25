@@ -125,33 +125,65 @@ img {
    =============================== */
 
 .inventory-button {
-    background: transparent;
-    border: none;
-    padding: 0;
+    width: 100%;
+    background: rgba(107, 138, 60, 0.12);
+    border: 1px solid #506d2f;
+    border-radius: 8px;
+    padding: 1rem;
     cursor: pointer;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.7rem;
     margin: 0 auto 0.75rem;
-    transition: transform 0.12s ease, filter 0.12s ease;
+    transition: transform 0.12s ease, filter 0.12s ease, border-color 0.12s ease, background 0.12s ease;
 }
 
 .inventory-button:hover {
     transform: translateY(-2px) scale(1.04);
+    border-color: #c3a028;
+    background: rgba(195, 160, 40, 0.12);
     filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.7));
 }
 
 .inventory-label {
-    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid #c3a028;
+    background: #b38728;
+    color: #fff7d4;
+    font-size: 0.78rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #ffd75b;
+    letter-spacing: 0.08em;
+    text-align: center;
 }
 
 /* ===============================
    Projects
    =============================== */
+
+.projects-section {
+    background: #101509;
+    border-top: 2px solid #2f4021;
+}
+
+.section-header {
+    max-width: 44rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-kicker {
+    color: #ffd75b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
 
 .projects-section h2 {
     margin-bottom: 0.25rem;
@@ -171,7 +203,7 @@ img {
 
 .project-card {
     background: #1a2210;
-    border-radius: 12px;
+    border-radius: 8px;
     border: 2px solid #2f4021;
     padding: 1.25rem;
     display: flex;
@@ -205,6 +237,7 @@ img {
 .project-description {
     font-size: 0.9rem;
     color: #d7d2a4;
+    flex: 1;
 }
 
 .project-tags {
@@ -233,8 +266,9 @@ img {
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    padding: 0.45rem 0.9rem;
-    border-radius: 999px;
+    min-height: 2.4rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 8px;
     border: 2px solid #c3a028;
     background: #b38728;
     color: #fff7d4;
@@ -274,11 +308,11 @@ img {
 
 .inventory-panel {
     background: #1a2210;
-    border-radius: 16px;
+    border-radius: 8px;
     border: 2px solid #2f4021;
     box-shadow: 0 20px 50px rgba(10, 15, 5, 0.8);
     width: 100%;
-    max-width: 640px;
+    max-width: 760px;
     max-height: 80vh;
     padding: 1.25rem 1.5rem;
     display: flex;
@@ -323,18 +357,19 @@ img {
     margin-top: 0.25rem;
     padding-right: 0.25rem;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 0.75rem;
 }
 
 .inventory-item {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
     justify-content: space-between;
     gap: 0.75rem;
-    padding: 0.55rem 0.55rem;
-    border-radius: 10px;
+    padding: 0.8rem;
+    border-radius: 8px;
     background: linear-gradient(90deg, rgba(31,43,19,0.9), rgba(26,33,16,0.3));
     border: 1px solid #2f4021;
 }
@@ -348,9 +383,10 @@ img {
 .inventory-item-icon {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #2f4021;
     background: #18210f;
+    flex: 0 0 auto;
 }
 
 .inventory-item-text {
@@ -490,7 +526,7 @@ img {
     }
 
     .inventory-item {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         align-items: flex-start;
     }
 

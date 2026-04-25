@@ -27,6 +27,20 @@ const projects = [
         url: "https://github.com/RaideNnigth/LemonJuiceBlockChain",
         description: "Blockchain experiments powered by citrus.",
         tags: ["Blockchain", "Experiments"]
+    },
+    {
+        title: "PROCEL Back-End",
+        icon: "images/zeldabean.webp",
+        url: "https://github.com/ravilon/PROCEL-Back-End",
+        description: "Backend quest for PROCEL, focused on server-side logic and APIs.",
+        tags: ["Backend", "API", "Server"]
+    },
+    {
+        title: "Fuerza Seguros",
+        icon: "images/zeldamap.png",
+        url: "https://github.com/RaideNnigth/fuerza-seguros-project",
+        description: "Full-stack insurance platform with frontend, backend and database setup.",
+        tags: ["Full-stack", "Node.js", "MongoDB"]
     }
 
     // Exemplo de site local:
@@ -91,7 +105,7 @@ function createProjectCard(project) {
     link.href = project.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = "Equip";
+    link.textContent = "View Code";
 
     actions.appendChild(link);
 
@@ -167,7 +181,7 @@ function createInventoryItem(project) {
     equipLink.href = project.url;
     equipLink.target = "_blank";
     equipLink.rel = "noopener noreferrer";
-    equipLink.textContent = "Equip";
+    equipLink.textContent = "View Code";
 
     actions.appendChild(equipLink);
 
