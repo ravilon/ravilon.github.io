@@ -1,69 +1,152 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    
 <head>
     <meta charset="UTF-8">
-    <title>Ravilon | Adventurer & Developer</title>
+    <title>Ravilon Aguiar | Desenvolvedor Backend e Solution Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfólio de Ravilon Aguiar dos Santos, Sr. Solution Engineer com foco em LIMS, LabVantage, Java, SQL, NoSQL, backend, APIs e sistemas orientados a dados.">
+    <meta name="keywords" content="Ravilon Aguiar, backend developer, solution engineer, LIMS, LabVantage, Java, SQL, NoSQL, Spring Boot, Flask, PostgreSQL">
+    <meta name="author" content="Ravilon Aguiar dos Santos">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b0f08">
+    <link rel="canonical" href="https://ravilon.com.br/">
+    <link rel="alternate" hreflang="pt-BR" href="https://ravilon.com.br/?lang=pt-BR">
+    <link rel="alternate" hreflang="en-US" href="https://ravilon.com.br/?lang=en-US">
+    <link rel="alternate" hreflang="x-default" href="https://ravilon.com.br/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ravilon.com.br/">
+    <meta property="og:title" content="Ravilon Aguiar | Desenvolvedor Backend e Solution Engineer">
+    <meta property="og:description" content="Portfólio de Ravilon Aguiar dos Santos, Sr. Solution Engineer com foco em LIMS, LabVantage, Java, SQL, NoSQL, backend, APIs e sistemas orientados a dados.">
+    <meta property="og:image" content="https://ravilon.com.br/images/link-hero.gif">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ravilon Aguiar | Desenvolvedor Backend e Solution Engineer">
+    <meta name="twitter:description" content="Portfólio de Ravilon Aguiar dos Santos, Sr. Solution Engineer com foco em LIMS, LabVantage, Java, SQL, NoSQL, backend, APIs e sistemas orientados a dados.">
+    <meta name="twitter:image" content="https://ravilon.com.br/images/link-hero.gif">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ravilon Aguiar dos Santos",
+        "url": "https://ravilon.com.br/",
+        "sameAs": [
+            "https://www.linkedin.com/in/ravilon/",
+            "https://github.com/ravilon",
+            "https://www.instagram.com/raviilon"
+        ],
+        "jobTitle": "Sr. Solution Engineer",
+        "knowsAbout": ["LIMS", "LabVantage", "Java", "SQL", "NoSQL", "Backend Development", "APIs", "PostgreSQL", "Spring Boot", "Flask"]
+    }
+    </script>
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
     <header class="site-header">
+        <div class="container topbar" aria-label="Language selection" data-i18n-aria-label="language.selectionLabel">
+            <div class="site-brand">Ravilon Aguiar</div>
+            <div class="language-switch" role="group" aria-label="Choose language" data-i18n-aria-label="language.groupLabel">
+                <button class="language-button" type="button" data-language="pt-BR" aria-pressed="true">PT-BR</button>
+                <button class="language-button" type="button" data-language="en-US" aria-pressed="false">EN-US</button>
+            </div>
+        </div>
+
         <div class="container hero">
             <div class="hero-text">
-                <p class="hero-subtitle">Hey, Listen!</p>
-                <h1>Welcome, Adventurer!</h1>
-                <p class="hero-description">
-                    Here lives <strong>a developer and adventurer</strong> — always grinding XP,
-                    learning new skills and crafting side quests in code.
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Hey, Listen!</p>
+                <h1 data-i18n="hero.title">Bem-vindo, aventureiro!</h1>
+                <p class="hero-description" data-i18n-html="hero.description">
+                    Aqui vive <strong>um desenvolvedor e aventureiro</strong>, sempre ganhando XP,
+                    aprendendo novas habilidades e criando missões paralelas em código.
                 </p>
-                <p class="hero-quote">
-                    “It's dangerous to go alone… take some projects!”
+                <p class="hero-quote" data-i18n="hero.quote">
+                    "É perigoso ir sozinho... leve alguns projetos!"
                 </p>
             </div>
             <div class="hero-image">
-                <img src="images/link-hero.gif" alt="Link pixel art" />
+                <img src="images/link-hero.gif" alt="Link pixel art" data-i18n-alt="hero.imageAlt">
             </div>
         </div>
     </header>
 
     <main class="site-main">
-        <!-- Status HUD -->
-        <section class="section status-section">
-            <div class="container status-grid">
-                <div class="status-card">
-                    <h2>Life Bar</h2>
-                    <img src="images/heartbar.png" alt="Life bar" class="status-image">
-                    <p class="status-text">
-                        My life bar – how much energy I still have for new adventures.
+        <section class="section profile-section" aria-labelledby="profile-title">
+            <div class="container profile-layout">
+                <div class="section-header profile-copy">
+                    <p class="section-kicker" data-i18n="profile.kicker">Sobre o desenvolvedor</p>
+                    <h2 id="profile-title">Ravilon Aguiar dos Santos</h2>
+                    <p class="profile-lead" data-i18n="profile.lead">
+                        Sr. Solution Engineer com foco em soluções LIMS, desenvolvimento backend e sistemas orientados a dados.
                     </p>
+                    <p data-i18n="profile.body1">
+                        Trabalho com Java, SQL e NoSQL para customizar e sustentar sistemas de informação laboratorial,
+                        especialmente em ambientes LabVantage. Meu foco é transformar fluxos de negócio e laboratório
+                        em software confiável, integrações limpas e ferramentas que tornam a informação mais fácil de gerenciar.
+                    </p>
+                    <p data-i18n="profile.body2">
+                        Fora da missão principal, desenvolvo serviços backend, aplicações full-stack e experimentos que
+                        conectam resolução prática de problemas com curiosidade por novas tecnologias.
+                    </p>
+                    <div class="profile-actions" aria-label="Links profissionais" data-i18n-aria-label="profile.actionsLabel">
+                        <a class="btn-equip" href="https://www.linkedin.com/in/ravilon/" target="_blank" rel="noopener noreferrer">
+                            <img class="brand-icon" src="images/linkedin-simple.svg" alt="" aria-hidden="true">
+                            LinkedIn
+                        </a>
+                        <a class="btn-secondary" href="https://github.com/ravilon?tab=repositories" target="_blank" rel="noopener noreferrer">
+                            <img class="brand-icon" src="images/github-simple.svg" alt="" aria-hidden="true">
+                            <span data-i18n="profile.githubRepos">Repositórios GitHub</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="status-card">
-                    <h2>Inventory</h2>
+                <div class="profile-panel" aria-label="Principais habilidades" data-i18n-aria-label="profile.skillsLabel">
+                    <div class="profile-life">
+                        <h3 data-i18n="profile.lifeTitle">Life Bar</h3>
+                        <img src="images/heartbar.png" alt="Barra de vida" class="profile-life-image" data-i18n-alt="profile.lifeAlt">
+                        <p data-i18n="profile.lifeText">Energia para novos builds, refactors e missões em sistemas laboratoriais.</p>
+                    </div>
+                    <h3 data-i18n="profile.stackTitle">Core Stack</h3>
+                    <div class="profile-skill-list">
+                        <span class="tag-pill">Java</span>
+                        <span class="tag-pill">SQL</span>
+                        <span class="tag-pill">NoSQL</span>
+                        <span class="tag-pill">LIMS</span>
+                        <span class="tag-pill">LabVantage</span>
+                        <span class="tag-pill">Backend</span>
+                        <span class="tag-pill">APIs</span>
+                        <span class="tag-pill">Full-stack</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- MOCHILA INTERATIVA -->
-                    <button class="inventory-button" id="inventory-button" type="button">
-                        <img src="images/inventory.png" alt="Inventory backpack" class="status-image">
-                        <span class="inventory-label">Open Project Inventory</span>
+        <section class="section status-section">
+            <div class="container inventory-container">
+                <div class="status-card">
+                    <h2 data-i18n="inventory.title">Inventário</h2>
+
+                    <button class="inventory-button" id="inventory-button" type="button" aria-expanded="false" aria-controls="projects-panel">
+                        <img src="images/inventory.png" alt="Mochila do inventário" class="status-image" data-i18n-alt="inventory.imageAlt">
+                        <span class="inventory-label" data-i18n="inventory.open">Abrir inventário de projetos</span>
                     </button>
 
-                    <p class="status-text">
-                        Browse the complete project inventory, from backend quests to full-stack adventures.
+                    <p class="status-text" data-i18n="inventory.description">
+                        Explore o inventário completo de projetos, de missões backend a aventuras full-stack.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="section projects-section" aria-labelledby="projects-title">
+        <section id="projects-panel" class="section projects-section" aria-labelledby="projects-title" aria-hidden="true">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-kicker">Selected quests</p>
-                    <h2 id="projects-title">Projects</h2>
-                    <p class="section-subtitle">
-                        A quick look at the main projects in my inventory. Each one opens the code in a new tab.
+                <div class="section-header projects-header">
+                    <div>
+                        <p class="section-kicker" data-i18n="projects.kicker">Inventário de projetos</p>
+                        <h2 id="projects-title" data-i18n="projects.title">Projetos</h2>
+                    </div>
+                    <button class="projects-close-btn" id="projects-close-button" type="button" aria-label="Fechar inventário de projetos" data-i18n-aria-label="projects.closeLabel">&times;</button>
+                    <p class="section-subtitle" data-i18n="projects.description">
+                        Escolha uma missão do inventário. Cada projeto abre o código em uma nova aba.
                     </p>
                 </div>
                 <div id="projects-grid" class="projects-grid">
@@ -72,48 +155,32 @@
             </div>
         </section>
 
-    <!-- INVENTORY MENU (overlay) -->
-    <div id="inventory-overlay" class="inventory-overlay" aria-hidden="true">
-        <div class="inventory-panel" role="dialog" aria-modal="true" aria-labelledby="inventory-title">
-            <div class="inventory-header">
-                <h3 id="inventory-title">Project Inventory</h3>
-                <button class="inventory-close-btn" type="button" aria-label="Close inventory">&times;</button>
+        <section class="section hero-footer">
+            <div class="container hero-footer-inner">
+                <img src="images/ravilonDancante.gif" alt="Hero walking" class="hero-footer-image" data-i18n-alt="footerHero.imageAlt">
+                <p class="hero-footer-text" data-i18n="footerHero.text">
+                    Novas dungeons e refactors sempre aparecem no caminho. Vamos continuar a aventura.
+                </p>
             </div>
-            <p class="inventory-description">
-                Choose a project to inspect the repository.
-            </p>
-            <div id="inventory-list" class="inventory-list">
-                <!-- JS vai renderizar os itens do inventário aqui -->
-            </div>
-        </div>
-    </div>
-
-    <section class="section hero-footer">
-        <div class="container hero-footer-inner">
-            <img src="images/ravilonDancante.gif" alt="Hero walking" class="hero-footer-image">
-            <p class="hero-footer-text">
-                New dungeons and refactors are always ahead. Let’s keep adventuring.
-            </p>
-        </div>
-    </section>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-text">
-                <h3>Created by Ravilon Aguiar</h3>
-                <p>&copy; 2024 All rights reserved.</p>
+                <h3 data-i18n="footer.createdBy">Criado por Ravilon Aguiar</h3>
+                <p data-i18n-html="footer.rights">&copy; 2024 Todos os direitos reservados.</p>
             </div>
 
             <div class="footer-social">
-                <a href="https://www.instagram.com/raviilon" target="_blank" rel="noopener noreferrer">
-                    <img src="images/instagramicon.png" alt="Instagram" class="social-icon">
+                <a class="social-link" href="https://www.instagram.com/raviilon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img class="brand-icon" src="images/instagram-simple.svg" alt="" aria-hidden="true">
                 </a>
-                <a href="https://github.com/ravilon" target="_blank" rel="noopener noreferrer">
-                    <img src="images/github-icon.png" alt="GitHub" class="social-icon">
+                <a class="social-link" href="https://github.com/ravilon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <img class="brand-icon" src="images/github-simple.svg" alt="" aria-hidden="true">
                 </a>
-                <a href="https://x.com/raviilon" target="_blank" rel="noopener noreferrer">
-                    <img src="images/twittericon.png" alt="Twitter/X" class="social-icon">
+                <a class="social-link" href="https://www.linkedin.com/in/ravilon/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img class="brand-icon" src="images/linkedin-simple.svg" alt="" aria-hidden="true">
                 </a>
             </div>
         </div>

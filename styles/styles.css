@@ -21,6 +21,14 @@ img {
     display: block;
 }
 
+.brand-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    display: inline-block;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
 .container {
     width: 100%;
     max-width: 960px;
@@ -32,6 +40,19 @@ img {
     padding: 2rem 0;
 }
 
+.section-header {
+    max-width: 44rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-kicker {
+    color: #ffd75b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
 /* ===============================
    Hero
    =============================== */
@@ -40,6 +61,49 @@ img {
     border-bottom: 2px solid #1b2d17;
     background: linear-gradient(180deg, #1c3b18 0%, #0e1c0b 100%);
     box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.site-brand {
+    color: #e9e3b4;
+    font-weight: 700;
+}
+
+.language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid #2f4021;
+    border-radius: 8px;
+    background: rgba(11, 15, 8, 0.42);
+}
+
+.language-button {
+    min-height: 2rem;
+    padding: 0.25rem 0.65rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #c8c197;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: background 0.1s ease, color 0.1s ease;
+}
+
+.language-button:hover,
+.language-button.is-active {
+    background: #b38728;
+    color: #fff7d4;
 }
 
 .hero {
@@ -83,6 +147,106 @@ img {
 }
 
 /* ===============================
+   Profile
+   =============================== */
+
+.profile-section {
+    background: #0f160b;
+    border-bottom: 2px solid #2f4021;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.profile-copy {
+    margin-bottom: 0;
+}
+
+.profile-copy h2 {
+    color: #e9e3b4;
+    margin-bottom: 0.5rem;
+}
+
+.profile-copy p {
+    color: #d7d2a4;
+    margin-bottom: 0.85rem;
+}
+
+.profile-lead {
+    color: #f5eeb8;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 2.4rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 8px;
+    border: 2px solid #6b8a3c;
+    background: rgba(107, 138, 60, 0.18);
+    color: #cde89c;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px);
+    background: rgba(107, 138, 60, 0.28);
+    box-shadow: 0 6px 14px rgba(107, 138, 60, 0.25);
+}
+
+.profile-panel {
+    background: #18210f;
+    border: 2px solid #2b3c1d;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.profile-panel h3 {
+    color: #e9e3b4;
+    margin-bottom: 1rem;
+}
+
+.profile-life {
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid #2f4021;
+}
+
+.profile-life-image {
+    margin-bottom: 0.75rem;
+}
+
+.profile-life p {
+    color: #d7d2a4;
+    font-size: 0.9rem;
+}
+
+.profile-skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+/* ===============================
    Status Cards
    =============================== */
 
@@ -90,6 +254,10 @@ img {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
+}
+
+.inventory-container {
+    max-width: 480px;
 }
 
 .status-card {
@@ -170,19 +338,18 @@ img {
 .projects-section {
     background: #101509;
     border-top: 2px solid #2f4021;
+    display: none;
 }
 
-.section-header {
-    max-width: 44rem;
-    margin-bottom: 1.5rem;
+.projects-section.is-open {
+    display: block;
 }
 
-.section-kicker {
-    color: #ffd75b;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+.projects-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem 1rem;
+    align-items: start;
 }
 
 .projects-section h2 {
@@ -191,8 +358,28 @@ img {
 }
 
 .section-subtitle {
+    grid-column: 1 / -1;
     margin-bottom: 1.5rem;
     color: #c2bb92;
+}
+
+.projects-close-btn {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 8px;
+    border: 1px solid #6b8a3c;
+    background: rgba(107, 138, 60, 0.18);
+    color: #f8f6e7;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.1s ease, color 0.1s ease, transform 0.1s ease;
+}
+
+.projects-close-btn:hover {
+    background: rgba(255, 112, 112, 0.16);
+    color: #ff9b9b;
+    transform: translateY(-1px);
 }
 
 .projects-grid {
@@ -285,140 +472,6 @@ img {
 }
 
 /* ===============================
-   Inventory Overlay
-   =============================== */
-
-.inventory-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(8, 11, 4, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.16s ease;
-    z-index: 50;
-}
-
-.inventory-overlay.is-open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.inventory-panel {
-    background: #1a2210;
-    border-radius: 8px;
-    border: 2px solid #2f4021;
-    box-shadow: 0 20px 50px rgba(10, 15, 5, 0.8);
-    width: 100%;
-    max-width: 760px;
-    max-height: 80vh;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.inventory-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 0.25rem;
-}
-
-.inventory-header h3 {
-    font-size: 1.2rem;
-    color: #e9e3b4;
-}
-
-.inventory-close-btn {
-    background: transparent;
-    border: none;
-    color: #f8f6e7;
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
-    padding: 0 0.25rem;
-}
-
-.inventory-close-btn:hover {
-    color: #ff7070;
-}
-
-.inventory-description {
-    font-size: 0.9rem;
-    color: #dcd5a2;
-    margin-bottom: 0.5rem;
-}
-
-.inventory-list {
-    margin-top: 0.25rem;
-    padding-right: 0.25rem;
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 0.75rem;
-}
-
-.inventory-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.8rem;
-    border-radius: 8px;
-    background: linear-gradient(90deg, rgba(31,43,19,0.9), rgba(26,33,16,0.3));
-    border: 1px solid #2f4021;
-}
-
-.inventory-item-left {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.inventory-item-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 6px;
-    border: 1px solid #2f4021;
-    background: #18210f;
-    flex: 0 0 auto;
-}
-
-.inventory-item-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-}
-
-.inventory-item-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #f5eeb8;
-}
-
-.inventory-item-desc {
-    font-size: 0.8rem;
-    color: #c8c197;
-}
-
-.inventory-item-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.2rem;
-    margin-top: 0.15rem;
-}
-
-.inventory-item .btn-equip {
-    font-size: 0.85rem;
-    padding: 0.35rem 0.8rem;
-}
-
-/* ===============================
    Hero Footer
    =============================== */
 
@@ -473,10 +526,31 @@ img {
     gap: 0.75rem;
 }
 
-.social-icon {
-    width: 32px;
-    height: 32px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+.social-link {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #6b8a3c;
+    background: rgba(107, 138, 60, 0.16);
+    color: #f8f6e7;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    transition: transform 0.1s ease, background 0.1s ease, border-color 0.1s ease, color 0.1s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-1px);
+    border-color: #c3a028;
+    background: rgba(195, 160, 40, 0.16);
+    color: #ffd75b;
+}
+
+.social-link .brand-icon {
+    width: 1.15rem;
+    height: 1.15rem;
 }
 
 /* ===============================
@@ -484,6 +558,12 @@ img {
    =============================== */
 
 @media (max-width: 640px) {
+   .topbar {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 0;
+    }
+
    .hero {
         flex-direction: column;
         align-items: center;
@@ -510,6 +590,15 @@ img {
         height: auto;
     }
 
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
     .hero-footer-inner {
         flex-direction: column;
         text-align: center;
@@ -520,17 +609,7 @@ img {
         text-align: center;
     }
 
-    .inventory-panel {
-        margin: 0 1rem;
-        padding: 1rem 1.1rem;
-    }
-
-    .inventory-item {
-        grid-template-columns: 1fr;
-        align-items: flex-start;
-    }
-
-    .inventory-item .btn-equip {
-        align-self: flex-end;
+    .projects-header {
+        grid-template-columns: 1fr auto;
     }
 }
